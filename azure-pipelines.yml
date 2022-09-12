@@ -28,3 +28,17 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: SonarCloudPrepare@1
+  inputs:
+    SonarCloud: 'SomSonarCloud'
+    organization: 'som-dev-organisation'
+    scannerMode: 'MSBuild'
+    projectKey: 'SomAgileProject'
+    projectName: 'SomAgileProject'
+
+- task: SonarCloudAnalyze@1
+- task: SonarCloudPublish@1
+  inputs:
+    pollingTimeoutSec: '300'
+
+
